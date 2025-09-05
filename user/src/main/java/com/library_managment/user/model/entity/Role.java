@@ -14,6 +14,7 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Access(AccessType.PROPERTY)
 public class Role extends EffectiveEntity {
 
     private String name;
@@ -21,8 +22,8 @@ public class Role extends EffectiveEntity {
 
     private List<User> users;
     private List<Resource> resources;
+    private List<Position> positions;
 
-    @Id
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
     @SequenceGenerator(name="role_seq",sequenceName="ROLE_SEQ", allocationSize=50)
@@ -38,6 +39,11 @@ public class Role extends EffectiveEntity {
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     public List<Resource> getResources(){
         return this.resources;
+    }
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    public List<Position> getPositions(){
+        return this.positions;
     }
 
 }

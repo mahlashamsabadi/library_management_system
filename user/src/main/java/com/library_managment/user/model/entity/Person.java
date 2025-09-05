@@ -7,22 +7,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Access(AccessType.PROPERTY)
 public class Person extends BaseEntity {
 
     private String firstName;
     private String lastName;
     private String nationalCode;
     private String phone;
-    private Date birthDate;
+    private LocalDateTime birthDate;
 
     private User user;
+    private List<Position> positions;
+
+    @Override
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
+    @SequenceGenerator(name="person_seq",sequenceName="PERSON_SEQ", allocationSize=50)
+    public Long getId() {
+        return super.getId();
+    }
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -30,4 +40,8 @@ public class Person extends BaseEntity {
         return this.user;
     }
 
+    @ManyToMany(mappedBy = "persons", fetch = FetchType.LAZY)
+    public List<Position> getPositions() {
+        return positions;
+    }
 }

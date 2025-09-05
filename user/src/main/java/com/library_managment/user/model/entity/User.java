@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@Access(AccessType.PROPERTY)
 public class User extends EffectiveEntity {
 
     private String username;
@@ -23,7 +24,6 @@ public class User extends EffectiveEntity {
 
     private Person person;
 
-    @Id
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
     @SequenceGenerator(name="my_seq",sequenceName="MY_SEQ", allocationSize=50)
