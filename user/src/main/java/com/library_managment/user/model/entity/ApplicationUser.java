@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Access(AccessType.PROPERTY)
-public class User extends EffectiveEntity {
+public class ApplicationUser extends EffectiveEntity {
 
     private String username;
     private String password;

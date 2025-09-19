@@ -20,7 +20,7 @@ public class Role extends EffectiveEntity {
     private String name;
     private String description;
 
-    private List<User> users;
+    private List<ApplicationUser> users;
     private List<Resource> resources;
     private List<Position> positions;
 
@@ -32,7 +32,7 @@ public class Role extends EffectiveEntity {
     }
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    public List<User> getUsers(){
+    public List<ApplicationUser> getUsers(){
         return this.users;
     }
 

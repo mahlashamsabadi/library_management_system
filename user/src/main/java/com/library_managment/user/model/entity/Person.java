@@ -24,7 +24,7 @@ public class Person extends BaseEntity {
     private String phone;
     private LocalDateTime birthDate;
 
-    private User user;
+    private ApplicationUser user;
     private List<Position> positions;
 
     @Override
@@ -36,7 +36,7 @@ public class Person extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    public User getUser(){
+    public ApplicationUser getUser(){
         return this.user;
     }
 
