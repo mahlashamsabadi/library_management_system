@@ -9,4 +9,6 @@ public interface UserService {
 
     Optional<ApplicationUser> getUserById(Long id);
 
+    Optional<ApplicationUser> getUserByUsername(String username);
+
 }

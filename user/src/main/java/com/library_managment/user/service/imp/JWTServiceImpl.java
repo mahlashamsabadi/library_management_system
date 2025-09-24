@@ -27,7 +27,7 @@ public class JWTServiceImpl implements JWTService {
     private JwtParser jwtParser;
     private UserService userService;
 
-    private final String SECRET_KEY = "QW9ER643TTgdYYlsefMlno";
+    private final String SECRET_KEY = "QW9ER643TTgdYYlsefMlnomvosejiLIHenriaseni8345979";
     private final String ROLE_CLAIM = "roleClaim";
     private final String ID_CLAIM = "idClaim";
     private final long  ACCESS_TOKEN_EXPIRATION_DURATION = 1000 * 60 * 60;

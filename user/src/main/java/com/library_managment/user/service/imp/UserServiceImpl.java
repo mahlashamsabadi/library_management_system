@@ -18,4 +18,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
+    public Optional<ApplicationUser> getUserByUsername(String username){
+        return userRepository.getByUsername(username);
+    }
+
 }

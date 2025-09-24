@@ -3,10 +3,14 @@ package com.library_managment.user;
 import com.library_managment.user.model.entity.ApplicationUser;
 import com.library_managment.user.model.entity.Role;
 import com.library_managment.user.service.api.JWTService;
+import com.library_managment.user.service.imp.JWTServiceImpl;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.crypto.SecretKey;
@@ -22,7 +26,7 @@ import static org.mockito.Mockito.when;
 class UserApplicationTests {
 
 	@InjectMocks
-	private JWTService jwtService; // Your class containing generateToken method
+	private JWTService jwtService = new JWTServiceImpl(); // Your class containing generateToken method
 
 	@Mock
 	private SecretKey generateSigningKey; // Mock the key generation method
@@ -52,9 +56,8 @@ class UserApplicationTests {
 	@Test
 	void generateToken_ShouldReturnValidJwtToken() {
 		// Arrange
-		SecretKey mockKey = mock(SecretKey.class);
-		when(jwtService.generateSigningKey()).thenReturn(mockKey);
-		when(mockKey.getAlgorithm()).thenReturn("HmacSHA256");
+//		SecretKey realKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//		when(jwtService.generateSigningKey()).thenReturn(realKey);
 
 		// Act
 		String token = jwtService.generateToken(testUser);
