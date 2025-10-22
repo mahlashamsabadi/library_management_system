@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Entity
@@ -16,25 +15,24 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Access(AccessType.PROPERTY)
-public class Person extends BaseEntity {
+public class LoginInfo extends BaseEntity {
 
-    private String firstName;
-    private String lastName;
-    private String nationalCode;
-    private String phone;
-    private LocalDateTime birthDate;
-
+    private String refresh;
     private ApplicationUser user;
+    private LocalDateTime expirationDate;
+    private LocalDateTime creationDate;
+
+
 
     @Override
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
-    @SequenceGenerator(name="person_seq",sequenceName="PERSON_SEQ", allocationSize=50)
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "loginInfo_seq")
+    @SequenceGenerator(name="loginInfo_seq",sequenceName="LOGIN_INFO_SEQ", allocationSize=50)
     public Long getId() {
         return super.getId();
     }
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public ApplicationUser getUser(){
         return this.user;

@@ -27,6 +27,7 @@ public class Role extends EffectiveEntity {
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
     @SequenceGenerator(name="role_seq",sequenceName="ROLE_SEQ", allocationSize=50)
+    @Id
     public Long getId() {
         return super.getId();
     }

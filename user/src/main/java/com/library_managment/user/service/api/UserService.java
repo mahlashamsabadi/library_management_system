@@ -11,4 +11,7 @@ public interface UserService {
 
     Optional<ApplicationUser> getUserByUsername(String username);
 
+    ApplicationUser save(ApplicationUser applicationUser);
+
+
 }

@@ -18,25 +18,26 @@ public class Position extends EffectiveEntity {
 
     private String title;
 
-    private List<Person> persons;
+    private List<ApplicationUser> users;
 
     private List<Role> roles;
 
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "position_seq")
     @SequenceGenerator(name="position_seq",sequenceName="POSITION_SEQ", allocationSize=50)
+    @Id
     public Long getId() {
         return super.getId();
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "person_position",
+            name = "user_position",
             joinColumns = @JoinColumn(name = "position_id"), // Foreign key for Book
-            inverseJoinColumns = @JoinColumn(name = "person_id") // Foreign key for Author
+            inverseJoinColumns = @JoinColumn(name = "user_id") // Foreign key for Author
     )
-    public List<Person> getPersons() {
-        return persons;
+    public List<ApplicationUser> getUsers() {
+        return users;
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

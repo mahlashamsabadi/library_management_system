@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class BaseEntity {
 
-    @Id
     private Long id;
 
 }

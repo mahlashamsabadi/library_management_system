@@ -1,5 +1,6 @@
 package com.library_managment.user.config.security;
 
+import com.library_managment.user.config.security.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,18 +21,18 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(customizer -> customizer.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(registry -> registry
-                        .requestMatchers("*")
+                        .requestMatchers("/auth/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 )
                 .authorizeHttpRequests(registry -> registry.anyRequest().authenticated())
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(STATELESS))
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 //                .addFilterAfter(loginFilter , UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(AbstractHttpConfigurer::disable);
 

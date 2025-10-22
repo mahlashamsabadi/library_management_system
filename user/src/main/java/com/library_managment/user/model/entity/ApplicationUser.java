@@ -21,12 +21,14 @@ public class ApplicationUser extends EffectiveEntity {
     private String email;
 
     private List<Role> roles;
+    private List<Position> positions;
 
     private Person person;
 
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
     @SequenceGenerator(name="my_seq",sequenceName="MY_SEQ", allocationSize=50)
+    @Id
     public Long getId() {
         return super.getId();
     }
@@ -55,6 +57,11 @@ public class ApplicationUser extends EffectiveEntity {
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Person getPerson(){
         return this.person;
+    }
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    public List<Position> getPositions() {
+        return positions;
     }
 
 
