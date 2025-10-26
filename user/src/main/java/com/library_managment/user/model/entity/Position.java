@@ -25,7 +25,6 @@ public class Position extends EffectiveEntity {
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "position_seq")
     @SequenceGenerator(name="position_seq",sequenceName="POSITION_SEQ", allocationSize=50)
-    @Id
     public Long getId() {
         return super.getId();
     }

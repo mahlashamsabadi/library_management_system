@@ -28,7 +28,6 @@ public class ApplicationUser extends EffectiveEntity {
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
     @SequenceGenerator(name="my_seq",sequenceName="MY_SEQ", allocationSize=50)
-    @Id
     public Long getId() {
         return super.getId();
     }

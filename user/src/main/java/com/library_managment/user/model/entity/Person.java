@@ -2,15 +2,14 @@ package com.library_managment.user.model.entity;
 
 import com.library_managment.user.model.entity.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @SuperBuilder
 @NoArgsConstructor
@@ -29,7 +28,6 @@ public class Person extends BaseEntity {
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
     @SequenceGenerator(name="person_seq",sequenceName="PERSON_SEQ", allocationSize=50)
-    @Id
     public Long getId() {
         return super.getId();
     }

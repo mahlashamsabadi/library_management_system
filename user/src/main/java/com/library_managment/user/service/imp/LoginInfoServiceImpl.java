@@ -5,18 +5,16 @@ import com.library_managment.user.model.entity.ApplicationUser;
 import com.library_managment.user.model.entity.LoginInfo;
 import com.library_managment.user.repository.LoginInfoRepository;
 import com.library_managment.user.service.api.LoginInfoService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class LoginInfoServiceImpl implements LoginInfoService {
 
-    private LoginInfoRepository loginInfoRepository;
+    private final LoginInfoRepository loginInfoRepository;
 
     @Override
     public LoginInfo save(LoginInfo loginInfo) {

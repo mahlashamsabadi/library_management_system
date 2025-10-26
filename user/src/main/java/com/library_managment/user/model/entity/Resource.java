@@ -19,7 +19,6 @@ public class Resource extends EffectiveEntity {
     @Override
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resource_seq")
     @SequenceGenerator(name="resource_seq",sequenceName="RESOURCE_SEQ", allocationSize=50)
-    @Id
     public Long getId() {
         return super.getId();
     }

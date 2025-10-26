@@ -3,7 +3,6 @@ package com.library_managment.user.service.imp;
 import com.library_managment.user.model.entity.ApplicationUser;
 import com.library_managment.user.model.entity.LoginInfo;
 import com.library_managment.user.service.api.JWTService;
-import com.library_managment.user.service.api.LoginInfoService;
 import com.library_managment.user.service.api.UserService;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
@@ -12,11 +11,9 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.sql.Ref;
 import java.time.LocalDateTime;
 import java.util.*;
 

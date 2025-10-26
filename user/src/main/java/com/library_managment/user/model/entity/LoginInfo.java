@@ -25,7 +25,6 @@ public class LoginInfo extends BaseEntity {
 
 
     @Override
-    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "loginInfo_seq")
     @SequenceGenerator(name="loginInfo_seq",sequenceName="LOGIN_INFO_SEQ", allocationSize=50)
     public Long getId() {
